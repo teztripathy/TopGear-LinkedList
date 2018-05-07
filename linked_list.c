@@ -247,7 +247,6 @@ int main() {
 					else
 						head = append(head, name, age);
 					head = insertion_sort(head);
-					printf("%d",count(head));
 					printf("\n");
 					break;
 					
