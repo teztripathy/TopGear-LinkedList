@@ -207,8 +207,8 @@ void menu() {
 	printf("**                                             INSTRUCTION                                                        **\n");
 	printf("********************************************************************************************************************\n");
 	printf("** insert name age - To insert name and age. age is integer; eg.  insert Tejeswar 22                              **\n");
-	printf("** print position  - To print a particular node; position is an integer; position starts from one; eg. print 2   **\n");
-	printf("** remove position - To remove a particular node; position is an integer; position starts from one; eg. remove 2 **\n");
+	printf("** print position  - To print a particular node; position is an integer; position starts from zero; eg. print 2   **\n");
+	printf("** remove position - To remove a particular node; position is an integer; position starts from zero; eg. remove 2 **\n");
 	printf("** display         - To display the entire list                                                                   **\n");
 	printf("**               KEEP IN MIND. THE LIST IS AUTO SORTED. DISPLAY BEFORE REMOVING ANY ITEM.                         **\n");
 	printf("********************************************************************************************************************\n");
@@ -252,7 +252,6 @@ int main() {
 					
 			case 2:
 					scanf("%d", &i);
-					i--;
 					temp = pos(head,i);
 					printf("\n");
 					display(temp);
@@ -261,9 +260,13 @@ int main() {
 			
 			case 3:
 					scanf("%d", &i);
-					i--;	
 					temp = pos(head, i);
-					head = remove_any(head, temp);
+					if(i == 0)
+						head = remove_front(head);
+					else if(i == count(head))
+						head = remove_back(head);
+					else
+						head = remove_any(head, temp);
 					head = insertion_sort(head);
 					printf("\n");
 					break;
